@@ -343,7 +343,7 @@ function App() {
 
           <div className="education-grid">
             <article>
-              <span>2023 - Jun 2026 expected</span>
+              <span>2023 - Jun 2026</span>
               <h3>B.Tech, Computer Science Engineering</h3>
               <p>Dr. M.C. Saxena Group of Colleges, Lucknow</p>
             </article>
