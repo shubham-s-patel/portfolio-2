@@ -6,6 +6,7 @@ import {
   Code2,
   Database,
   Download,
+  FolderKanban,
   Globe2,
   Mail,
   MapPin,
@@ -30,7 +31,12 @@ const profile = {
   resume: '/Shubham_Patel_Resume.pdf',
 }
 
-const navItems = ['Work', 'Skills', 'Experience', 'Contact']
+const navItems = [
+  { label: 'Work', href: '#work', icon: FolderKanban, text: 'Projects and outcomes' },
+  { label: 'Skills', href: '#skills', icon: Code2, text: '.NET, SQL, React, Angular' },
+  { label: 'Experience', href: '#experience', icon: BriefcaseBusiness, text: '3+ years in production' },
+  { label: 'Contact', href: '#contact', icon: Mail, text: 'Email, LinkedIn, GitHub' },
+]
 
 const metrics = [
   { value: '1M+', label: 'users served' },
@@ -122,11 +128,33 @@ function App() {
         </a>
 
         <nav className={menuOpen ? 'nav-links open' : 'nav-links'} aria-label="Primary navigation">
-          {navItems.map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} onClick={closeMenu}>
-              {item}
+          {navItems.map((item) => {
+            const Icon = item.icon
+
+            return (
+              <a key={item.label} href={item.href} onClick={closeMenu}>
+                <span className="nav-icon">
+                  <Icon size={18} />
+                </span>
+                <span className="nav-copy">
+                  <span>{item.label}</span>
+                  <small>{item.text}</small>
+                </span>
+                <ArrowUpRight className="nav-arrow" size={17} />
+              </a>
+            )
+          })}
+
+          <div className="mobile-menu-actions">
+            <a href={profile.resume} target="_blank" rel="noreferrer" onClick={closeMenu}>
+              <Download size={17} />
+              Resume
             </a>
-          ))}
+            <a href={`mailto:${profile.email}`} onClick={closeMenu}>
+              <Mail size={17} />
+              Hire me
+            </a>
+          </div>
         </nav>
 
         <div className="header-actions">
